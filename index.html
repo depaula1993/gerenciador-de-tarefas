@@ -7,15 +7,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" 
     integrity="sha512-NmLkDIU1C/C88wi324HBc+S2kLhi08PN5GDeUVVVC/BVt/9Izdsc9SVeVfA1UZbY3sHUlDSyRXhCzHfr6hmPPw==" 
     crossorigin="anonymous" referrerpolicy="no-referrer"/>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <h1 class="titulo__principal">My Files</h1>
-    <hr> 
-    <aside class="menu__lateral">
-        <p class="menu__lateral__titulo">Comece aqui:</p>
-        <button class="menu__lateral__botao">Upload file</button>
-        <button class="menu__lateral__botao">New Folder</button>
-    </aside>  
+    <header class="titulo">
+        <h1 class="titulo__principal">My Files</h1>
+        <hr>
+    </header>
+    <main class="principal"> 
+        <aside class="principal__menu__lateral">
+            <h2 class="menu__lateral__titulo">Comece aqui:</h2>
+            <label for="file" aria-label="Enviar arquivo" class="menu__lateral__botao menu__lateral__enviar">Upload file:</label>
+            <input type="file" id="file" style="display: none;">
+            <button class="menu__lateral__botao" aria-label="Criar uma nova pasta">New Folder</button>
+        </aside>
+        <section class="principal__arquivos" id="drop-area">
+            <h2>Seus arquivos:</h2>
+            
+            <p>Arraste um arquivo...</p>
+            <input type="file" id="file-input" multiple hidden>
+            <ul id="file-list" class="principal__lista">
+
+            </ul>   
+        </section>
+    </main>
+    <script src="./scripts/script.js" type="module"></script>
 </body>
 </html>
