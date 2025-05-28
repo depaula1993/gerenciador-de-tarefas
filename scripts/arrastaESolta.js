@@ -20,6 +20,7 @@ dropArea.addEventListener("drop", (event) => {
 // E objeto que armazena qual será a imagem do ícone
 // Se possível para otimizar criar somente um objeto, e uma única função que puxa tudo isso, ou que essa
 //única função seja a que já está dentro do onload. 
+//ADICIONAR SERVIDOR REMOTO: GITHUB !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //FILEREADER é assíncrono, parece com uma promessa, mas ao invés de resolve e reject, tem onload e onerror, que na realidade 
 // são eventos da tentativa de leitura dos arquivos lidos. FILEREADER  possui métodos próprios pra leitura de arquivos.
@@ -32,12 +33,13 @@ function capturaArquivosDiferente (arquivo){
         e.preventDefault();
         console.log(e);
 
+        console.log(tipoArquivo);
 
         const itemLista = document.createElement("li");
         const icone = document.createElement("div");
         icone.classList.add("icones__completos");
         
-        icone.innerHTML = `<img src="../imgs/txt.png" class="icone__imagem"><span class="icone__leg">${arquivo.name}</span>`;
+        icone.innerHTML = `<img src="../imgs/${leituraArquivo.leitura[tipoArquivo].img}.png" class="icone__imagem"><span class="icone__leg">${arquivo.name}</span>`;
 
      
 
@@ -54,7 +56,7 @@ const leituraArquivo = {
     leitura:{
         "text/plain": {
             tipoLeitura:"readAsText",
-            img:"texto"
+            img:"txt"
         },
         "image/jpeg": {
             tipoLeitura:"readAsDataURL",
@@ -90,7 +92,7 @@ const leituraArquivo = {
         },
         "application/json": {
             tipoLeitura:"readAsText",
-            img:"texto"
+            img:"txt"
         }
     }
 }
