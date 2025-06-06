@@ -9,20 +9,25 @@
     box-sizing: border-box;
 }*/
 
+.principal{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
 .principal__menu__lateral{
     display: flex;
     flex-direction: column;
     padding: 0 50px 0 50px;
     gap: 10px;
     border: 1px solid black;
-    position: absolute;
     height: 650px;
 }
 
 .principal__arquivos{
-    position: absolute;
-    left: 200px;
-    height: 900px;
+    margin-left: 10px;
+    height: 90%;
     width: 1000px;
     border: 1px solid black;
 }
@@ -71,4 +76,15 @@
 .icone__leg{
     word-wrap: break-word;
     max-width: 100%;
+}
+
+/*Classes para edição arquivos abertos*/
+
+.principal__arquivos__texto{
+    width: 90%;
+    height: 90%;
+    background-color: aqua;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;    
 }

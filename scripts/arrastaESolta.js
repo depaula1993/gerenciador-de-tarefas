@@ -1,3 +1,4 @@
+import { clicandoEAbrindoConteudoiconeTxt } from "./leituraTexto.js";
 window.addEventListener('dragover', e => e.preventDefault());
 window.addEventListener('drop', e => e.preventDefault());
 export const dropArea = document.querySelector("#drop-area");
@@ -8,16 +9,10 @@ dropArea.addEventListener("drop", (event) => {
 
     //console.log(event);
     const arquivo = event.dataTransfer.files[0];
-    //console.log(arquivo);
-    //console.log(arquivo.type);
     capturaArquivosDiferente(arquivo);
 
-
-    
 })
 
-// Criar objeto que armazena qual função de leitura será utilizada
-// E objeto que armazena qual será a imagem do ícone
 // Se possível para otimizar criar somente um objeto, e uma única função que puxa tudo isso, ou que essa
 //única função seja a que já está dentro do onload. 
 //ADICIONAR SERVIDOR REMOTO: GITHUB !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -28,23 +23,25 @@ function capturaArquivosDiferente (arquivo){
 
     let tipoArquivo = arquivo.type
     const reader = new FileReader();
+    console.log(arquivo);
 
     reader.onload = e => {
         e.preventDefault();
         console.log(e);
 
-        console.log(tipoArquivo);
+        const informaçãoDeExibição = e.originalTarget.result;
 
         const itemLista = document.createElement("li");
         const icone = document.createElement("div");
         icone.classList.add("icones__completos");
         
         icone.innerHTML = `<img src="../imgs/${leituraArquivo.leitura[tipoArquivo].img}.png" class="icone__imagem"><span class="icone__leg">${arquivo.name}</span>`;
-
-     
-
+        
+        clicandoEAbrindoConteudoiconeTxt(icone,informaçãoDeExibição);
+        
         itemLista.appendChild(icone);
         listaArquvivos.appendChild(itemLista);
+    
     }
     
     //reader.readAsText(arquivo);
@@ -52,6 +49,7 @@ function capturaArquivosDiferente (arquivo){
     
 }
 
+//adicionar no json server
 const leituraArquivo = {
     leitura:{
         "text/plain": {
