@@ -1,6 +1,6 @@
 import { dropArea } from "./arrastaESolta.js";
 
-export function clicandoEAbrindoConteudoiconeTxt(icone, txt){
+export function abrindoTxt(icone, txt){
     icone.addEventListener("dblclick", () =>{
         const texto = document.createElement("pre");
         texto.innerHTML = `<code>${txt}</code>`;

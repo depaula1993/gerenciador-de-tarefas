@@ -1,8 +1,11 @@
-import { clicandoEAbrindoConteudoiconeTxt } from "./leituraTexto.js";
+import {abrindoTxt} from "./leituraTexto.js";
+import { abrindoImg } from "./leituraImg.js";
+
 window.addEventListener('dragover', e => e.preventDefault());
 window.addEventListener('drop', e => e.preventDefault());
 export const dropArea = document.querySelector("#drop-area");
 const listaArquvivos = document.getElementById("file-list");
+
 
 dropArea.addEventListener("drop", (event) => {
     event.preventDefault();
@@ -23,38 +26,40 @@ function capturaArquivosDiferente (arquivo){
 
     let tipoArquivo = arquivo.type
     const reader = new FileReader();
-    console.log(arquivo);
+    //console.log(arquivo);
 
     reader.onload = e => {
         e.preventDefault();
-        console.log(e);
+        //console.log(e);
 
         const informaçãoDeExibição = e.originalTarget.result;
+
+        console.log(informaçãoDeExibição);
 
         const itemLista = document.createElement("li");
         const icone = document.createElement("div");
         icone.classList.add("icones__completos");
         
-        icone.innerHTML = `<img src="../imgs/${leituraArquivo.leitura[tipoArquivo].img}.png" class="icone__imagem"><span class="icone__leg">${arquivo.name}</span>`;
-        
-        clicandoEAbrindoConteudoiconeTxt(icone,informaçãoDeExibição);
+        icone.innerHTML = `<img src="../imgs/${leituraArquivo[tipoArquivo].img}.png" class="icone__imagem"><span class="icone__leg">${arquivo.name}</span>`;
+        //modificar aqui na função somente a parte da função com o tipo de arquivo lido, tipo txt. Para armazenar menos dados
+        //abrindoTxt(icone,informaçãoDeExibição);
+        funcoes[leituraArquivo[tipoArquivo].func](icone,informaçãoDeExibição);
         
         itemLista.appendChild(icone);
         listaArquvivos.appendChild(itemLista);
     
     }
     
-    //reader.readAsText(arquivo);
-    reader[leituraArquivo.leitura[tipoArquivo].tipoLeitura](arquivo);
+    reader[leituraArquivo[tipoArquivo].tipoLeitura](arquivo);
     
 }
 
 //adicionar no json server
 const leituraArquivo = {
-    leitura:{
         "text/plain": {
             tipoLeitura:"readAsText",
-            img:"txt"
+            img:"txt",
+            func:"abrindoTxt"
         },
         "image/jpeg": {
             tipoLeitura:"readAsDataURL",
@@ -62,7 +67,8 @@ const leituraArquivo = {
         },
         "image/png": {
             tipoLeitura:"readAsDataURL",
-            img:"img"
+            img:"img",
+            func:"abrindoImg"
         },
         "image/gif": {
             tipoLeitura:"readAsDataURL",
@@ -92,5 +98,10 @@ const leituraArquivo = {
             tipoLeitura:"readAsText",
             img:"txt"
         }
-    }
+}
+
+
+const funcoes = {
+    abrindoTxt,
+    abrindoImg
 }
