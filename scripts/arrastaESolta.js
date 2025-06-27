@@ -1,5 +1,6 @@
-import {abrindoTxt} from "./leituraTexto.js";
+import { abrindoTxt } from "./leituraTexto.js";
 import { abrindoImg } from "./leituraImg.js";
+import { abrindoPdf } from "./leituraPdf.js";
 
 window.addEventListener('dragover', e => e.preventDefault());
 window.addEventListener('drop', e => e.preventDefault());
@@ -34,13 +35,14 @@ function capturaArquivosDiferente (arquivo){
 
         const informaçãoDeExibição = e.originalTarget.result;
 
-        console.log(informaçãoDeExibição);
+        //console.log(informaçãoDeExibição);
 
         const itemLista = document.createElement("li");
         const icone = document.createElement("div");
         icone.classList.add("icones__completos");
         
-        icone.innerHTML = `<img src="../imgs/${leituraArquivo[tipoArquivo].img}.png" class="icone__imagem"><span class="icone__leg">${arquivo.name}</span>`;
+        icone.innerHTML = `<img src="../imgs/${leituraArquivo[tipoArquivo].img}.png" 
+        class="icone__imagem"><span class="icone__leg">${arquivo.name}</span>`;
         //modificar aqui na função somente a parte da função com o tipo de arquivo lido, tipo txt. Para armazenar menos dados
         //abrindoTxt(icone,informaçãoDeExibição);
         funcoes[leituraArquivo[tipoArquivo].func](icone,informaçãoDeExibição);
@@ -92,7 +94,8 @@ const leituraArquivo = {
         },
         "application/pdf": {
             tipoLeitura:"readAsDataURL",
-            img:"pdf"
+            img:"pdf",
+            func: "abrindoPdf"
         },
         "application/json": {
             tipoLeitura:"readAsText",
@@ -103,5 +106,6 @@ const leituraArquivo = {
 
 const funcoes = {
     abrindoTxt,
-    abrindoImg
+    abrindoImg,
+    abrindoPdf
 }
