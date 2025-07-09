@@ -1,6 +1,7 @@
 import { abrindoTxt } from "./leituraTexto.js";
 import { abrindoImg } from "./leituraImg.js";
 import { abrindoPdf } from "./leituraPdf.js";
+import { abrindoVideo } from "./leituraVideo.js";
 
 window.addEventListener('dragover', e => e.preventDefault());
 window.addEventListener('drop', e => e.preventDefault());
@@ -19,7 +20,6 @@ dropArea.addEventListener("drop", (event) => {
 
 // Se possível para otimizar criar somente um objeto, e uma única função que puxa tudo isso, ou que essa
 //única função seja a que já está dentro do onload. 
-//ADICIONAR SERVIDOR REMOTO: GITHUB !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //FILEREADER é assíncrono, parece com uma promessa, mas ao invés de resolve e reject, tem onload e onerror, que na realidade 
 // são eventos da tentativa de leitura dos arquivos lidos. FILEREADER  possui métodos próprios pra leitura de arquivos.
@@ -27,7 +27,7 @@ function capturaArquivosDiferente (arquivo){
 
     let tipoArquivo = arquivo.type
     const reader = new FileReader();
-    //console.log(arquivo);
+    //console.log(arquivo.type);
 
     reader.onload = e => {
         e.preventDefault();
@@ -35,7 +35,7 @@ function capturaArquivosDiferente (arquivo){
 
         const informaçãoDeExibição = e.originalTarget.result;
 
-        //console.log(informaçãoDeExibição);
+        console.log(informaçãoDeExibição);
 
         const itemLista = document.createElement("li");
         const icone = document.createElement("div");
@@ -43,8 +43,7 @@ function capturaArquivosDiferente (arquivo){
         
         icone.innerHTML = `<img src="../imgs/${leituraArquivo[tipoArquivo].img}.png" 
         class="icone__imagem"><span class="icone__leg">${arquivo.name}</span>`;
-        //modificar aqui na função somente a parte da função com o tipo de arquivo lido, tipo txt. Para armazenar menos dados
-        //abrindoTxt(icone,informaçãoDeExibição);
+     
         funcoes[leituraArquivo[tipoArquivo].func](icone,informaçãoDeExibição);
         
         itemLista.appendChild(icone);
@@ -82,7 +81,8 @@ const leituraArquivo = {
         },
         "video/mp4": {
             tipoLeitura:"readAsDataURL",
-            img:"video"
+            img:"video",
+            func:"abrindoVideo"
         },
         "video/webm": {
             tipoLeitura:"readAsDataURL",
@@ -107,5 +107,6 @@ const leituraArquivo = {
 const funcoes = {
     abrindoTxt,
     abrindoImg,
-    abrindoPdf
+    abrindoPdf,
+    abrindoVideo
 }
