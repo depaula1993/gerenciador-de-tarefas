@@ -1,0 +1,58 @@
+{
+  "arquivos": [
+    {
+      "mime": "text/plain",
+      "tipoLeitura": "readAsText",
+      "img": "txt",
+      "func": "abrindoTxt"
+    },
+    {
+      "mime": "image/jpeg",
+      "tipoLeitura": "readAsDataURL",
+      "img": "img"
+    },
+    {
+      "mime": "image/png",
+      "tipoLeitura": "readAsDataURL",
+      "img": "img",
+      "func": "abrindoImg"
+    },
+    {
+      "mime": "image/gif",
+      "tipoLeitura": "readAsDataURL",
+      "img": "img"
+    },
+    {
+      "mime": "image/webp",
+      "tipoLeitura": "readAsDataURL",
+      "img": "img"
+    },
+    {
+      "mime": "video/mp4",
+      "tipoLeitura": "readAsDataURL",
+      "img": "video",
+      "func": "abrindoVideo"
+    },
+    {
+      "mime": "video/webm",
+      "tipoLeitura": "readAsDataURL",
+      "img": "video"
+    },
+    {
+      "mime": "video/ogg",
+      "tipoLeitura": "readAsDataURL",
+      "img": "video"
+    },
+    {
+      "mime": "application/pdf",
+      "tipoLeitura": "readAsDataURL",
+      "img": "pdf",
+      "func": "abrindoPdf"
+    },
+    {
+      "mime": "application/json",
+      "tipoLeitura": "readAsText",
+      "img": "txt"
+    }
+  ]
+}
