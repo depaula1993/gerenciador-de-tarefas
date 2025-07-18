@@ -14,6 +14,9 @@ let lucas = new Promise((resolve, reject) =>{
 
 })
 
+//=======================================================================================================
+
+
  //SOBRE ASSINCRONIDADE E PROMESSAS
 /*
  function dizerOla(){
@@ -30,15 +33,3 @@ let lucas = new Promise((resolve, reject) =>{
 dizerOla();
 
 */
-//=======================================================================================================
-
-async function testBD() {
-
-    const dados = await fetch("http://localhost:3000/arquivos");
-    const  dadosTraduzidos = await dados.json();
-
-    console.log(dadosTraduzidos);
-
-}
-
-testBD();
