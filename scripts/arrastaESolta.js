@@ -3,12 +3,12 @@ import { abrindoImg } from "./leituraImg.js";
 import { abrindoPdf } from "./leituraPdf.js";
 import { abrindoVideo } from "./leituraVideo.js";
 import { buscaArquivos } from "./buscarArquivos.js";
+import { btnUploadFile } from "./botaoUploadFile.js";
 
 window.addEventListener('dragover', e => e.preventDefault());
 window.addEventListener('drop', e => e.preventDefault());
 export const dropArea = document.querySelector("#drop-area");
 const listaArquvivos = document.getElementById("file-list");
-
 
 
 dropArea.addEventListener("drop", async (event) => {
@@ -25,7 +25,7 @@ dropArea.addEventListener("drop", async (event) => {
 
 //FILEREADER é assíncrono, parece com uma promessa, mas ao invés de resolve e reject, tem onload e onerror, que na realidade 
 // são eventos da tentativa de leitura dos arquivos lidos. FILEREADER  possui métodos próprios pra leitura de arquivos.
-async function capturaArquivosDiferente (arquivo, dados){
+export function capturaArquivosDiferente (arquivo, dados){
 
     let tipoArquivo = arquivo.type;
 
@@ -35,7 +35,7 @@ async function capturaArquivosDiferente (arquivo, dados){
     const reader = new FileReader();
     //console.log(arquivo.type);
 
-    reader.onload = e => {
+    reader.onload =  (e) => {
         e.preventDefault();
         //console.log(e);
 
@@ -57,7 +57,7 @@ async function capturaArquivosDiferente (arquivo, dados){
     
     }
     
-    reader[dado.tipoLeitura](arquivo);
+     reader[dado.tipoLeitura](arquivo);
     
 }
 

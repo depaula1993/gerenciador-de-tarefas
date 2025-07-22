@@ -2,7 +2,7 @@
 
 import { dropArea } from "./arrastaESolta.js";
 
-console.log(dropArea);
+//console.log(dropArea);
 
 
 
