@@ -20,12 +20,9 @@ dropArea.addEventListener("drop", async (event) => {
 
 })
 
-// Se possível para otimizar criar somente um objeto, e uma única função que puxa tudo isso, ou que essa
-//única função seja a que já está dentro do onload. 
-
 //FILEREADER é assíncrono, parece com uma promessa, mas ao invés de resolve e reject, tem onload e onerror, que na realidade 
 // são eventos da tentativa de leitura dos arquivos lidos. FILEREADER  possui métodos próprios pra leitura de arquivos.
-export function capturaArquivosDiferente (arquivo, dados){
+export async function capturaArquivosDiferente (arquivo, dados){
 
     let tipoArquivo = arquivo.type;
 
@@ -58,6 +55,21 @@ export function capturaArquivosDiferente (arquivo, dados){
     }
     
      reader[dado.tipoLeitura](arquivo);
+
+     await fetch("http://localhost:3000/arquivosAdicionados",{
+        method: "POST",
+        headers:{
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(
+            {
+                
+            }
+        )
+
+        
+        
+});
     
 }
 
@@ -68,52 +80,4 @@ const funcoes = {
     abrindoPdf,
     abrindoVideo
 }
-
-/*
-const leituraArquivo = {
-        "text/plain": {
-            tipoLeitura:"readAsText",
-            img:"txt",
-            func:"abrindoTxt"
-        },
-        "image/jpeg": {
-            tipoLeitura:"readAsDataURL",
-            img:"img"
-        },
-        "image/png": {
-            tipoLeitura:"readAsDataURL",
-            img:"img",
-            func:"abrindoImg"
-        },
-        "image/gif": {
-            tipoLeitura:"readAsDataURL",
-            img:"img"
-        },
-        "image/webp": {
-            tipoLeitura:"readAsDataURL",
-            img:"img"
-        },
-        "video/mp4": {
-            tipoLeitura:"readAsDataURL",
-            img:"video",
-            func:"abrindoVideo"
-        },
-        "video/webm": {
-            tipoLeitura:"readAsDataURL",
-            img:"video"
-        },
-        "video/ogg": {
-            tipoLeitura:"readAsDataURL",
-            img:"video"
-        },
-        "application/pdf": {
-            tipoLeitura:"readAsDataURL",
-            img:"pdf",
-            func: "abrindoPdf"
-        },
-        "application/json": {
-            tipoLeitura:"readAsText",
-            img:"txt"
-        }
-}*/
 
