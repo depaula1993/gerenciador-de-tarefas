@@ -16,6 +16,7 @@ dropArea.addEventListener("drop", async (event) => {
 
     const arquivo = event.dataTransfer.files[0];
     const dados = await buscaArquivos();
+    console.log(dados);
     capturaArquivosDiferente(arquivo, dados);
 
 })
