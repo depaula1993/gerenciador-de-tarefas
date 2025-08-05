@@ -4,57 +4,67 @@
       "mime": "text/plain",
       "tipoLeitura": "readAsText",
       "img": "txt",
-      "func": "abrindoTxt"
+      "func": "abrindoTxt",
+      "id": "99a6"
     },
     {
       "mime": "image/jpeg",
       "tipoLeitura": "readAsDataURL",
-      "img": "img"
+      "img": "img",
+      "id": "06a7"
     },
     {
       "mime": "image/png",
       "tipoLeitura": "readAsDataURL",
       "img": "img",
-      "func": "abrindoImg"
+      "func": "abrindoImg",
+      "id": "0b59"
     },
     {
       "mime": "image/gif",
       "tipoLeitura": "readAsDataURL",
-      "img": "img"
+      "img": "img",
+      "id": "10fc"
     },
     {
       "mime": "image/webp",
       "tipoLeitura": "readAsDataURL",
-      "img": "img"
+      "img": "img",
+      "id": "1929"
     },
     {
       "mime": "video/mp4",
       "tipoLeitura": "readAsDataURL",
       "img": "video",
-      "func": "abrindoVideo"
+      "func": "abrindoVideo",
+      "id": "daae"
     },
     {
       "mime": "video/webm",
       "tipoLeitura": "readAsDataURL",
-      "img": "video"
+      "img": "video",
+      "id": "e285"
     },
     {
       "mime": "video/ogg",
       "tipoLeitura": "readAsDataURL",
-      "img": "video"
+      "img": "video",
+      "id": "1a20"
     },
     {
       "mime": "application/pdf",
       "tipoLeitura": "readAsDataURL",
       "img": "pdf",
-      "func": "abrindoPdf"
+      "func": "abrindoPdf",
+      "id": "2985"
     },
     {
       "mime": "application/json",
       "tipoLeitura": "readAsText",
-      "img": "txt"
+      "img": "txt",
+      "id": "68c1"
     }
   ],
-
-  "arquivosAdicionados":[]
+  "arquivosAdicionados": [
+  ]
 }

@@ -15,8 +15,8 @@ dropArea.addEventListener("drop", async (event) => {
     event.preventDefault();
 
     const arquivo = event.dataTransfer.files[0];
-    const dados = await buscaArquivos();
-    console.log(dados);
+    console.log(arquivo);
+    const dados = await buscaArquivos();        
     capturaArquivosDiferente(arquivo, dados);
 
 })
@@ -28,7 +28,6 @@ export async function capturaArquivosDiferente (arquivo, dados){
     let tipoArquivo = arquivo.type;
 
     const dado = dados.find(dado => dado.mime === tipoArquivo);
-    console.log(dado);
 
     const reader = new FileReader();
     //console.log(arquivo.type);
@@ -37,7 +36,7 @@ export async function capturaArquivosDiferente (arquivo, dados){
         e.preventDefault();
         //console.log(e);
 
-        const informaçãoDeExibição = e.originalTarget.result;
+        const informaçãoDeExibição = e.target.result;
 
         //console.log(informaçãoDeExibição);
 
@@ -57,19 +56,14 @@ export async function capturaArquivosDiferente (arquivo, dados){
     
      reader[dado.tipoLeitura](arquivo);
 
-     await fetch("http://localhost:3000/arquivosAdicionados",{
+     await fetch("https://api.jsonbin.io/v3/b",{
         method: "POST",
         headers:{
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "X-Master-Key": "$2a$10$OVQ.Lh9kMP173G1LgjKOVOzFcCf3BdLOQ53RUew/CFwE/3VjQ2OTW"
         },
-        body: JSON.stringify(
-            {
-                
-            }
-        )
+        body: JSON.stringify(arquivo)
 
-        
-        
 });
     
 }
