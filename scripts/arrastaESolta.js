@@ -52,7 +52,7 @@ export async function capturaArquivosDiferente (arquivo, dados){
         itemLista.appendChild(icone);
         listaArquvivos.appendChild(itemLista);
     
-        await fetch("https://api.jsonbin.io/v3/b",{
+        await fetch("https://api.jsonbin.io/v3/bins",{
             method: "POST",
             headers:{
                 "Content-Type": "application/json",
@@ -70,8 +70,7 @@ export async function capturaArquivosDiferente (arquivo, dados){
     
     }
     
-     reader[dado.tipoLeitura](arquivo);
-    
+    reader[dado.tipoLeitura](arquivo);
 }
 
 
