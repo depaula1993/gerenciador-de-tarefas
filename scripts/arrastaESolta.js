@@ -32,13 +32,13 @@ export async function capturaArquivosDiferente (arquivo, dados){
     const reader = new FileReader();
     //console.log(arquivo.type);
 
-    reader.onload =  (e) => {
+    reader.onload = async (e) => {
         e.preventDefault();
         //console.log(e);
 
-        const informaçãoDeExibição = e.target.result;
+        const informacaoDeExibicao = e.target.result;
 
-        console.log(informaçãoDeExibição);
+        console.log(informacaoDeExibicao);
 
         const itemLista = document.createElement("li");
         const icone = document.createElement("div");
@@ -47,24 +47,30 @@ export async function capturaArquivosDiferente (arquivo, dados){
         icone.innerHTML = `<img src="../imgs/${dado.img}.png" 
         class="icone__imagem"><span class="icone__leg">${arquivo.name}</span>`;
      
-        funcoes[dado.func](icone,informaçãoDeExibição);
+        funcoes[dado.func](icone,informacaoDeExibicao);
         
         itemLista.appendChild(icone);
         listaArquvivos.appendChild(itemLista);
     
+        await fetch("https://api.jsonbin.io/v3/b",{
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json",
+                "X-Master-Key": "$2a$10$OVQ.Lh9kMP173G1LgjKOVOzFcCf3BdLOQ53RUew/CFwE/3VjQ2OTW"
+            },
+            body: JSON.stringify(
+                {
+                    tipo: arquivo.type,
+                    nome: arquivo.name,
+                    resultado: informacaoDeExibicao
+                }
+            )
+
+        });
+    
     }
     
      reader[dado.tipoLeitura](arquivo);
-
-     await fetch("https://api.jsonbin.io/v3/b",{
-        method: "POST",
-        headers:{
-            "Content-Type": "application/json",
-            "X-Master-Key": "$2a$10$OVQ.Lh9kMP173G1LgjKOVOzFcCf3BdLOQ53RUew/CFwE/3VjQ2OTW"
-        },
-        body: JSON.stringify(arquivo)
-
-});
     
 }
 
