@@ -51,27 +51,32 @@ export async function capturaArquivosDiferente (arquivo, dados){
         
         itemLista.appendChild(icone);
         listaArquvivos.appendChild(itemLista);
-    
-        await fetch("https://api.jsonbin.io/v3/bins",{
-            method: "POST",
-            headers:{
-                "Content-Type": "application/json",
-                "X-Master-Key": "$2a$10$OVQ.Lh9kMP173G1LgjKOVOzFcCf3BdLOQ53RUew/CFwE/3VjQ2OTW"
-            },
-            body: JSON.stringify(
-                {
-                    tipo: arquivo.type,
-                    nome: arquivo.name,
-                    resultado: informacaoDeExibicao
-                }
-            )
+        
+        try{
+            await fetch("https://api.jsonbin.io/v3/bins",{
+                method: "POST",
+                headers:{
+                    "Content-Type": "application/json",
+                    "X-Master-Key": "$2a$10$OVQ.Lh9kMP173G1LgjKOVOzFcCf3BdLOQ53RUew/CFwE/3VjQ2OTW"
+                },
+                body: JSON.stringify(
+                    {
+                        tipo: arquivo.type,
+                        nome: arquivo.name,
+                        resultado: informacaoDeExibicao
+                    }
+                )
 
-        });
-    
+            });
+        }
+        catch{
+            console.log("Nao deu certo");
+        }
     }
     
     reader[dado.tipoLeitura](arquivo);
 }
+
 
 
 const funcoes = {
