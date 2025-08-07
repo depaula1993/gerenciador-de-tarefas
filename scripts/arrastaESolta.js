@@ -38,7 +38,7 @@ export async function capturaArquivosDiferente (arquivo, dados){
 
         const informaçãoDeExibição = e.target.result;
 
-        //console.log(informaçãoDeExibição);
+        console.log(informaçãoDeExibição);
 
         const itemLista = document.createElement("li");
         const icone = document.createElement("div");
