@@ -53,11 +53,12 @@ export async function capturaArquivosDiferente (arquivo, dados){
         listaArquvivos.appendChild(itemLista);
         
         try{
-            await fetch("https://api.jsonbin.io/v3/bins/6894ed94f7e7a370d1f695c0/arquivos",{
-                method: "POST",
+            await fetch("https://api.jsonbin.io/v3/b/68956eff203a8b52b5e16137",{
+                method: "PUT",
                 headers:{
                     "Content-Type": "application/json",
-                    "X-Master-Key": "$2a$10$OVQ.Lh9kMP173G1LgjKOVOzFcCf3BdLOQ53RUew/CFwE/3VjQ2OTW"
+                    "X-Master-Key": "$2a$10$OVQ.Lh9kMP173G1LgjKOVOzFcCf3BdLOQ53RUew/CFwE/3VjQ2OTW",
+                    "X-Access-Key": "$2a$10$JALe6Re3ukSsHfaIMhoD6ueGAbN/2mfUK7vKK3302Gis8tMsX5lWu"
                 },
                 body: JSON.stringify(
                     {
@@ -69,8 +70,8 @@ export async function capturaArquivosDiferente (arquivo, dados){
 
             });
         }
-        catch{
-            console.log("Nao deu certo");
+        catch(erro){
+            console.log("Nao deu certo", erro);
         }
     }
     
