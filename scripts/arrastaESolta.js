@@ -5,6 +5,8 @@ import { abrindoVideo } from "./leituraVideo.js";
 import { buscaArquivos } from "./buscarArquivos.js";
 import { btnUploadFile } from "./botaoUploadFile.js";
 
+//Criar função assíncrona que irá trabalhar com os dados da função bucarArquivosExistentes.
+
 window.addEventListener('dragover', e => e.preventDefault());
 window.addEventListener('drop', e => e.preventDefault());
 export const dropArea = document.querySelector("#drop-area");
@@ -15,7 +17,7 @@ dropArea.addEventListener("drop", async (event) => {
     event.preventDefault();
 
     const arquivo = event.dataTransfer.files[0];
-    console.log(arquivo);
+    //console.log(arquivo);
     const dados = await buscaArquivos();        
     capturaArquivosDiferente(arquivo, dados);
 
@@ -38,7 +40,7 @@ export async function capturaArquivosDiferente (arquivo, dados){
 
         const informacaoDeExibicao = e.target.result;
 
-        console.log(informacaoDeExibicao);
+        //console.log(informacaoDeExibicao);
 
         const itemLista = document.createElement("li");
         const icone = document.createElement("div");
@@ -51,28 +53,8 @@ export async function capturaArquivosDiferente (arquivo, dados){
         
         itemLista.appendChild(icone);
         listaArquvivos.appendChild(itemLista);
-        
-        try{
-            await fetch("https://api.jsonbin.io/v3/b/68956eff203a8b52b5e16137",{
-                method: "PUT",
-                headers:{
-                    "Content-Type": "application/json",
-                    "X-Master-Key": "$2a$10$OVQ.Lh9kMP173G1LgjKOVOzFcCf3BdLOQ53RUew/CFwE/3VjQ2OTW",
-                    "X-Access-Key": "$2a$10$JALe6Re3ukSsHfaIMhoD6ueGAbN/2mfUK7vKK3302Gis8tMsX5lWu"
-                },
-                body: JSON.stringify(
-                    {
-                        tipo: arquivo.type,
-                        nome: arquivo.name,
-                        resultado: informacaoDeExibicao
-                    }
-                )
 
-            });
-        }
-        catch(erro){
-            console.log("Nao deu certo", erro);
-        }
+        await criaArquivos(arquivo, informacaoDeExibicao);
     }
     
     reader[dado.tipoLeitura](arquivo);
@@ -87,3 +69,44 @@ const funcoes = {
     abrindoVideo
 }
 
+
+async function criaArquivos(arquivo, informacaoDeExibicao){
+    
+    try{
+           
+           //const arquivosExistentes = await fetch()
+           
+            await fetch("https://api.jsonbin.io/v3/b/689930b143b1c97be91b5f4e",{
+                method: "PUT",
+                headers:{
+                    "Content-Type": "application/json",
+                    "X-Master-Key": "$2a$10$OVQ.Lh9kMP173G1LgjKOVOzFcCf3BdLOQ53RUew/CFwE/3VjQ2OTW",
+                    "X-Access-Key": "$2a$10$JALe6Re3ukSsHfaIMhoD6ueGAbN/2mfUK7vKK3302Gis8tMsX5lWu"
+                },
+                body: JSON.stringify(
+                    
+                    {
+                        tipo: arquivo.type,
+                        nome: arquivo.name,
+                        resultado: informacaoDeExibicao
+                    }
+                )
+
+            });
+        }
+        catch(erro){
+            console.log("Nao deu certo", erro);
+        }
+} 
+
+async function buscarArquivosExistentes(){
+    const resposta = await fetch("https://api.jsonbin.io/v3/b/689930b143b1c97be91b5f4e",{
+        method: "GET",
+        headers:{
+             "X-Master-Key": "$2a$10$OVQ.Lh9kMP173G1LgjKOVOzFcCf3BdLOQ53RUew/CFwE/3VjQ2OTW"
+        }
+    });
+    const arquivos = await resposta.json();
+
+    return arquivos;
+}

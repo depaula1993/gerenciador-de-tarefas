@@ -7,7 +7,7 @@ export async function buscaArquivos() {
         }
     });
     const  dadosTraduzidos = await dados.json();
-    //console.log(dadosTraduzidos.record.arquivos);
+    //console.log(dadosTraduzidos);
      
     return dadosTraduzidos.record.arquivos 
 
