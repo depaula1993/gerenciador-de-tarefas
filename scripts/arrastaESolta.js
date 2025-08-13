@@ -5,7 +5,6 @@ import { abrindoVideo } from "./leituraVideo.js";
 import { buscaArquivos } from "./buscarArquivos.js";
 import { btnUploadFile } from "./botaoUploadFile.js";
 
-//Criar função assíncrona que irá trabalhar com os dados da função bucarArquivosExistentes.
 
 window.addEventListener('dragover', e => e.preventDefault());
 window.addEventListener('drop', e => e.preventDefault());
@@ -37,7 +36,6 @@ export async function capturaArquivosDiferente (arquivo, dados){
     reader.onload = async (e) => {
         e.preventDefault();
         //console.log(e);
-
         const informacaoDeExibicao = e.target.result;
 
         //console.log(informacaoDeExibicao);
@@ -74,8 +72,21 @@ async function criaArquivos(arquivo, informacaoDeExibicao){
     
     try{
            
-           //const arquivosExistentes = await fetch()
-           
+            const dadosSalvos = await buscarArquivosExistentes();
+
+            const arquivosExistentes = dadosSalvos.record.arquivos;
+            //console.log(arquivosExistentes);
+            
+            const arquivoatual = {
+                        tipo: arquivo.type,
+                        nome: arquivo.name,
+                        resultado: informacaoDeExibicao
+                    }
+                    
+            arquivosExistentes.push(arquivoatual);
+             
+            console.log(arquivosExistentes);
+            /*        
             await fetch("https://api.jsonbin.io/v3/b/689930b143b1c97be91b5f4e",{
                 method: "PUT",
                 headers:{
@@ -83,23 +94,15 @@ async function criaArquivos(arquivo, informacaoDeExibicao){
                     "X-Master-Key": "$2a$10$OVQ.Lh9kMP173G1LgjKOVOzFcCf3BdLOQ53RUew/CFwE/3VjQ2OTW",
                     "X-Access-Key": "$2a$10$JALe6Re3ukSsHfaIMhoD6ueGAbN/2mfUK7vKK3302Gis8tMsX5lWu"
                 },
-                body: JSON.stringify(
-                    
-                    {
-                        tipo: arquivo.type,
-                        nome: arquivo.name,
-                        resultado: informacaoDeExibicao
-                    }
-                )
-
-            });
+                body: JSON.stringify(arquivosExistentes)
+            });*/
         }
         catch(erro){
             console.log("Nao deu certo", erro);
         }
 } 
 
-async function buscarArquivosExistentes(){
+export async function buscarArquivosExistentes(){
     const resposta = await fetch("https://api.jsonbin.io/v3/b/689930b143b1c97be91b5f4e",{
         method: "GET",
         headers:{
