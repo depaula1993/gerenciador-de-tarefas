@@ -1,16 +1,9 @@
-import { buscarArquivosExistentes } from "./arrastaESolta.js";
-
-let arquivosRecebidos
-async function arquivosExistentes () {
-    arquivosRecebidos = await buscarArquivosExistentes();
-    console.log(arquivosRecebidos.record.arquivos);
-
-}
-
-arquivosExistentes();
+import { dropArea } from "./arrastaESolta.js"
 
 
 
+
+console.log(dropArea);
 
 
 
