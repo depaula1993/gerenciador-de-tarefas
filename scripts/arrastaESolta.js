@@ -116,7 +116,7 @@ export async function buscarArquivosExistentes(){
 
 async function atualizararquivosExistentes(arquivos) {
     
-       await fetch("http://localhost:3000/arquivosAdicionados",{
+       await fetch("https://super-telegram-6qj4qw969rxhr6pp-3000.app.github.dev/arquivosAdicionados",{
                     method: "POST",
                     headers:{
                         "Content-Type": "application/json",
