@@ -29,8 +29,10 @@ dropArea.addEventListener("drop", async (event) => {
 export async function capturaArquivosDiferente (arquivo, dados){
 
     let tipoArquivo = arquivo.type;
+
+    const dadosTraduzidos = dados.record.arquivos;
     console.log(dados);
-    const dado = dados.find(dado => dado.mime === tipoArquivo);
+    const dado = dadosTraduzidos.find(dado => dado.mime === tipoArquivo);
 
     const reader = new FileReader();
     //console.log(arquivo.type);
