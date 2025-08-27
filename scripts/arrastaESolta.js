@@ -78,14 +78,14 @@ async function criaArquivos(arquivo, informacaoDeExibicao){
                         resultado: informacaoDeExibicao
                     }
                     
-            //const funçãoBuscarArquivosExistentes = 1; //variável que identifica qual array buscar no arquivo db.json
+            const funçãoBuscarArquivosExistentes = 1; //variável que identifica qual array buscar no arquivo db.json
 
-            //const dadosSalvos = await buscaArquivos(funçãoBuscarArquivosExistentes); 
+            const dadosSalvos = await buscaArquivos(funçãoBuscarArquivosExistentes); 
                     
                 //dadosSalvos.push(arquivoatual);
-                //console.log(dadosSalvos);
+                console.log(dadosSalvos);
 
-                atualizararquivosExistentes(arquivoatual);
+                //atualizararquivosExistentes(arquivoatual);
 
             /*if(dadosSalvos.length === 0){
             }else{
