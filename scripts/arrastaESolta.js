@@ -83,21 +83,18 @@ async function criaArquivos(arquivo, informacaoDeExibicao){
             const dadosSalvos = await buscaArquivos(funçãoBuscarArquivosExistentes); 
             console.log(dadosSalvos);
 
-            const arquivosExistentes = dadosSalvos.record
-            
-            console.log(arquivosExistentes);
-           
+            const arquivos = dadosSalvos.record
 
-
+            console.log(arquivos);
             
-            //atualizararquivosExistentes(arquivoatual);
-            /*
-            if(dadosSalvos.length === 0){
-                dadosSalvos.push(arquivoatual);
+            if(arquivos.length === 0){
+                arquivos.push(arquivoatual);
+                atualizararquivosExistentes(arquivos);
             }else{
-                arquivosExistentes.push(arquivoatual);
-                atualizararquivosExistentes(arquivosExistentes);
-            }*/
+                arquivos.arquivosExistentes.push(arquivoatual);
+                atualizararquivosExistentes(arquivos);
+            }
+        
         }
         catch(erro){
             console.log("Nao deu certo", erro);
@@ -122,10 +119,12 @@ export async function buscarArquivosExistentes(){
 
 async function atualizararquivosExistentes(arquivos) {
     
-       await fetch("https://super-telegram-6qj4qw969rxhr6pp-3000.app.github.dev/arquivosAdicionados",{
-                    method: "POST",
+       await fetch("https://api.jsonbin.io/v3/b/689930b143b1c97be91b5f4e",{
+                    method: "PUT",
                     headers:{
                         "Content-Type": "application/json",
+                        "X-Master-Key": "$2a$10$OVQ.Lh9kMP173G1LgjKOVOzFcCf3BdLOQ53RUew/CFwE/3VjQ2OTW",
+                        "X-Access-Key": "$2a$10$JALe6Re3ukSsHfaIMhoD6ueGAbN/2mfUK7vKK3302Gis8tMsX5lWu"
                     },
                     body: JSON.stringify(arquivos)
             });
