@@ -30,7 +30,8 @@ export async function capturaArquivosDiferente (arquivo, dados){
 
     let tipoArquivo = arquivo.type;
 
-    const dado = dados.find(dado => dado.mime === tipoArquivo);
+    const dadosTraduzidos = dados.record.arquivos;
+    const dado = dadosTraduzidos.find(dado => dado.mime === tipoArquivo);
 
     const reader = new FileReader();
     //console.log(arquivo.type);
@@ -78,6 +79,7 @@ async function criaArquivos(arquivo, informacaoDeExibicao){
                         resultado: informacaoDeExibicao
                     }
                     
+<<<<<<< HEAD
             //const funçãoBuscarArquivosExistentes = 1; //variável que identifica qual array buscar no arquivo db.json
 
             //const dadosSalvos = await buscaArquivos(funçãoBuscarArquivosExistentes); 
@@ -92,6 +94,24 @@ async function criaArquivos(arquivo, informacaoDeExibicao){
                 arquivosExistentes.push(arquivoatual);
                 atualizararquivosExistentes(arquivosExistentes);
             }*/
+=======
+            const funçãoBuscarArquivosExistentes = 1; //variável que identifica qual array buscar no arquivo db.json
+            const dadosSalvos = await buscaArquivos(funçãoBuscarArquivosExistentes); 
+            console.log(dadosSalvos);
+
+            const arquivos = dadosSalvos.record
+
+            console.log(arquivos);
+            
+            if(arquivos.length === 0){
+                arquivos.push(arquivoatual);
+                atualizararquivosExistentes(arquivos);
+            }else{
+                arquivos.arquivosExistentes.push(arquivoatual);
+                atualizararquivosExistentes(arquivos);
+            }
+        
+>>>>>>> 6ad14e1ac72faf4ebc7bc0dad2def294ec52c117
         }
         catch(erro){
             console.log("Nao deu certo", erro);
@@ -116,10 +136,19 @@ export async function buscarArquivosExistentes(){
 
 async function atualizararquivosExistentes(arquivos) {
     
+<<<<<<< HEAD
        await fetch("http://localhost:3000/arquivosAdicionados",{
                     method: "PUT",
                     headers:{
                         "Content-Type": "application/json",
+=======
+       await fetch("https://api.jsonbin.io/v3/b/689930b143b1c97be91b5f4e",{
+                    method: "PUT",
+                    headers:{
+                        "Content-Type": "application/json",
+                        "X-Master-Key": "$2a$10$OVQ.Lh9kMP173G1LgjKOVOzFcCf3BdLOQ53RUew/CFwE/3VjQ2OTW",
+                        "X-Access-Key": "$2a$10$JALe6Re3ukSsHfaIMhoD6ueGAbN/2mfUK7vKK3302Gis8tMsX5lWu"
+>>>>>>> 6ad14e1ac72faf4ebc7bc0dad2def294ec52c117
                     },
                     body: JSON.stringify(arquivos)
             });
