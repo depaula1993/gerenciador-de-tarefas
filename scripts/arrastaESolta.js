@@ -1,15 +1,11 @@
-import { abrindoTxt } from "./leituraTexto.js";
-import { abrindoImg } from "./leituraImg.js";
-import { abrindoPdf } from "./leituraPdf.js";
-import { abrindoVideo } from "./leituraVideo.js";
 import { buscaArquivos } from "./buscarArquivos.js";
 import { btnUploadFile } from "./botaoUploadFile.js";
+import { criaArquivo } from "./script.js";
 
 
 window.addEventListener('dragover', e => e.preventDefault());
 window.addEventListener('drop', e => e.preventDefault());
 export const dropArea = document.querySelector("#drop-area");
-const listaArquvivos = document.getElementById("file-list");
 
 
 dropArea.addEventListener("drop", async (event) => {
@@ -18,7 +14,6 @@ dropArea.addEventListener("drop", async (event) => {
     const funçãoBuscarTipoArquivos = 0; //variável que identifica qual array buscar no arquivo db.json
 
     const arquivo = event.dataTransfer.files[0];
-    //console.log(arquivo);
     const dados = await buscaArquivos(funçãoBuscarTipoArquivos);        
     capturaArquivosDiferente(arquivo, dados);
 
@@ -43,34 +38,16 @@ export async function capturaArquivosDiferente (arquivo, dados){
 
         //console.log(informacaoDeExibicao);
 
-        const itemLista = document.createElement("li");
-        const icone = document.createElement("div");
-        icone.classList.add("icones__completos");
+        criaArquivo(arquivo,dado, informacaoDeExibicao);
+
+        await salvaArquivos(arquivo, informacaoDeExibicao);
         
-        icone.innerHTML = `<img src="../imgs/${dado.img}.png" 
-        class="icone__imagem"><span class="icone__leg">${arquivo.name}</span>`;
-     
-        funcoes[dado.func](icone,informacaoDeExibicao);
-        
-        await criaArquivos(arquivo, informacaoDeExibicao);
-        itemLista.appendChild(icone);
-        listaArquvivos.appendChild(itemLista);
     }
     
     reader[dado.tipoLeitura](arquivo);
 }
 
-
-
-const funcoes = {
-    abrindoTxt,
-    abrindoImg,
-    abrindoPdf,
-    abrindoVideo
-}
-
-
-async function criaArquivos(arquivo, informacaoDeExibicao){
+async function salvaArquivos(arquivo, informacaoDeExibicao){
     
     try{
            const arquivoatual = {
@@ -79,79 +56,35 @@ async function criaArquivos(arquivo, informacaoDeExibicao){
                         resultado: informacaoDeExibicao
                     }
                     
-<<<<<<< HEAD
-            //const funçãoBuscarArquivosExistentes = 1; //variável que identifica qual array buscar no arquivo db.json
-
-            //const dadosSalvos = await buscaArquivos(funçãoBuscarArquivosExistentes); 
-                    
-                //dadosSalvos.push(arquivoatual);
-                console.log(dadosSalvos);
-
-                atualizararquivosExistentes(arquivoatual);
-
-            /*if(dadosSalvos.length === 0){
-            }else{
-                arquivosExistentes.push(arquivoatual);
-                atualizararquivosExistentes(arquivosExistentes);
-            }*/
-=======
             const funçãoBuscarArquivosExistentes = 1; //variável que identifica qual array buscar no arquivo db.json
             const dadosSalvos = await buscaArquivos(funçãoBuscarArquivosExistentes); 
             console.log(dadosSalvos);
 
-            const arquivos = dadosSalvos.record
+            const arquivos = dadosSalvos.record;
 
             console.log(arquivos);
+            arquivos.arquivosExistentes.push(arquivoatual);
+            atualizararquivosExistentes(arquivos);
             
-            if(arquivos.length === 0){
-                arquivos.push(arquivoatual);
-                atualizararquivosExistentes(arquivos);
-            }else{
-                arquivos.arquivosExistentes.push(arquivoatual);
-                atualizararquivosExistentes(arquivos);
-            }
-        
->>>>>>> 6ad14e1ac72faf4ebc7bc0dad2def294ec52c117
         }
         catch(erro){
             console.log("Nao deu certo", erro);
         }
 
-    }
-
-
-/*
-export async function buscarArquivosExistentes(){
-    const resposta = await fetch("https://api.jsonbin.io/v3/b/689930b143b1c97be91b5f4e",{
-        method: "GET",
-        headers:{
-             "X-Master-Key": "$2a$10$OVQ.Lh9kMP173G1LgjKOVOzFcCf3BdLOQ53RUew/CFwE/3VjQ2OTW"
-        }
-    });
-    const arquivos = await resposta.json();
-
-    return arquivos;
-}
-*/    
+    }   
 
 async function atualizararquivosExistentes(arquivos) {
     
-<<<<<<< HEAD
-       await fetch("http://localhost:3000/arquivosAdicionados",{
-                    method: "PUT",
-                    headers:{
-                        "Content-Type": "application/json",
-=======
        await fetch("https://api.jsonbin.io/v3/b/689930b143b1c97be91b5f4e",{
                     method: "PUT",
                     headers:{
                         "Content-Type": "application/json",
                         "X-Master-Key": "$2a$10$OVQ.Lh9kMP173G1LgjKOVOzFcCf3BdLOQ53RUew/CFwE/3VjQ2OTW",
                         "X-Access-Key": "$2a$10$JALe6Re3ukSsHfaIMhoD6ueGAbN/2mfUK7vKK3302Gis8tMsX5lWu"
->>>>>>> 6ad14e1ac72faf4ebc7bc0dad2def294ec52c117
                     },
                     body: JSON.stringify(arquivos)
             });
     
     
 }
+

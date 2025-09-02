@@ -10,9 +10,9 @@ btnUploadFile.addEventListener("change",async e =>{
     const arquivos = e.target.files;
 
     const dados = await buscaArquivos();
-     Array.from(arquivos).forEach( element => {
+     Array.from(arquivos).forEach( async element => {
         
-        capturaArquivosDiferente(element, dados);
+       await capturaArquivosDiferente(element, dados);
     
     });
 
