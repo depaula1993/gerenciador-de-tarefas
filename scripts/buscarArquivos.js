@@ -48,8 +48,14 @@ export async function buscaArquivos(tipoFunção) {
 
             ])
         
-            console.log(resposta1, "=-=-=-=-=", resposta2);
+            //console.log(resposta1, "=-=-=-=-=", resposta2);
 
+            const resposta ={
+                resposta1,
+                resposta2
+            }
+
+            return resposta 
         }
 
 }

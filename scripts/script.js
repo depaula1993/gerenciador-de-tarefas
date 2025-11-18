@@ -14,6 +14,7 @@ console.log(dropArea);
 (async () =>{
     
     const arquivosJaSalvos = await buscaArquivos(2);
+    console.log(arquivosJaSalvos);
     const arrayDeArquivos  = arquivosJaSalvos.record.arquivosExistentes;
 
     arrayDeArquivos.forEach(element => {
