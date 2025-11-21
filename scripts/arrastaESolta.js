@@ -25,8 +25,8 @@ export async function capturaArquivosDiferente (arquivo, dados){
 
     let tipoArquivo = arquivo.type;
 
-    const dadosTraduzidos = dados.record.arquivos;
-    const dado = dadosTraduzidos.find(dado => dado.mime === tipoArquivo);
+    const dadosMime = dados.record.arquivos;
+    const dado = dadosMime.find(dado => dado.mime === tipoArquivo);
 
     const reader = new FileReader();
     //console.log(arquivo.type);
@@ -64,7 +64,7 @@ async function salvaArquivos(arquivo, informacaoDeExibicao){
 
             console.log(arquivos);
             arquivos.arquivosExistentes.push(arquivoatual);
-            atualizararquivosExistentes(arquivos);
+            await atualizararquivosExistentes(arquivos);
             
         }
         catch(erro){

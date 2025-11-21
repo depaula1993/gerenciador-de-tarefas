@@ -5,7 +5,7 @@ import { abrindoVideo } from "./leituraVideo.js";
 import { dropArea } from "./arrastaESolta.js"
 import { buscaArquivos } from "./buscarArquivos.js";
 const listaArquvivos = document.getElementById("file-list");
-console.log(dropArea);
+//console.log(dropArea);
 
 
 //Fazer um terceiro tipo de busca na buscarArquivos, em que utilizando promisseAll vc faz duas requisições em paralelo 
@@ -13,11 +13,21 @@ console.log(dropArea);
 
 (async () =>{
     
-    const arquivosJaSalvos = await buscaArquivos(2);
-    console.log(arquivosJaSalvos);
-    const arrayDeArquivos  = arquivosJaSalvos.record.arquivosExistentes;
+    const arquivosBD = await buscaArquivos(2);
+    //console.log(arquivosBD);
 
-    arrayDeArquivos.forEach(element => {
+    const dadosMime = arquivosBD.resposta1.record.arquivos
+    console.log(dadosMime);
+    const arrayDeArquivos  = arquivosBD.resposta2.record.arquivosExistentes;
+    console.log(arrayDeArquivos);
+
+    arrayDeArquivos.forEach(elemento => {
+        const tipoArquivo = elemento.tipo;
+        const dado = dadosMime.find(dado => dado.mime === tipoArquivo);
+
+        console.log(elemento);
+
+        criaArquivo(elemento, dado, elemento.resultado);
         
     });
 
@@ -33,7 +43,7 @@ export function criaArquivo(arquivo,dado, informacaoDeExibicao){
         icone.classList.add("icones__completos");
         
         icone.innerHTML = `<img src="../imgs/${dado.img}.png" 
-        class="icone__imagem"><span class="icone__leg">${arquivo.name}</span>`;
+        class="icone__imagem"><span class="icone__leg">${arquivo.name || arquivo.nome}</span>`;
      
         funcoes[dado.func](icone,informacaoDeExibicao);
         
