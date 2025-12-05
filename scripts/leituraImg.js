@@ -20,7 +20,7 @@ export function abrindoImg(icone, img){
         console.log(e);
         
         const menuExclusao = document.createElement('div')
-        menuExclusao.classList.add(menuExclusao);
+        menuExclusao.classList.add("menuExclusao");
         menuExclusao.style.left = e.pageX + "px";
         menuExclusao.style.top = e.pageY + "px";
 
