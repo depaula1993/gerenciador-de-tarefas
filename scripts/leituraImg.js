@@ -17,8 +17,10 @@ export function abrindoImg(icone, img){
     icone.addEventListener("contextmenu", e =>{
         
         e.preventDefault();
+        console.log(e);
         
-        console.log("Clique botão esquerdo")
+        const menuExclusao = document.createElement('div')
+        menuExclusao.classList.add(menuExclusao);
 
     })
 }
