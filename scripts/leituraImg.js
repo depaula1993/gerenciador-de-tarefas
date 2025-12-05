@@ -16,6 +16,8 @@ export function abrindoImg(icone, img){
 
     icone.addEventListener("contextmenu", e =>{
         
+        e.preventDefault();
+        
         console.log("Clique botão esquerdo")
 
     })
