@@ -17,15 +17,13 @@ const listaArquvivos = document.getElementById("file-list");
     //console.log(arquivosBD);
 
     const dadosMime = arquivosBD.resposta1.record.arquivos
-    console.log(dadosMime);
+    //console.log(dadosMime);
     const arrayDeArquivos  = arquivosBD.resposta2.record.arquivosExistentes;
-    console.log(arrayDeArquivos);
+    //console.log(arrayDeArquivos);
 
     arrayDeArquivos.forEach(elemento => {
         const tipoArquivo = elemento.tipo;
         const dado = dadosMime.find(dado => dado.mime === tipoArquivo);
-
-        console.log(elemento);
 
         criaArquivo(elemento, dado, elemento.resultado);
         
