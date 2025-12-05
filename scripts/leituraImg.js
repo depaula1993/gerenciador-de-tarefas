@@ -13,4 +13,10 @@ export function abrindoImg(icone, img){
         //console.log(dropArea);
         //console.log("É uma imagem png")         
     })
+
+    icone.addEventListener("contextmenu", e =>{
+        
+        console.log("Clique botão esquerdo")
+
+    })
 }
