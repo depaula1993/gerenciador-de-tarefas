@@ -98,9 +98,12 @@
 }
 
 .menuExclusao{
-    display: none;
     position: absolute;
     width: 5%;
     height: 5%;
     background-color: black;
+}
+
+.menuExclusaoSome{
+    display: none;
 }
