@@ -58,7 +58,6 @@ async function salvaArquivos(arquivo, informacaoDeExibicao){
                     
             const funçãoBuscarArquivosExistentes = 1; //variável que identifica qual array buscar no arquivo db.json
             const dadosSalvos = await buscaArquivos(funçãoBuscarArquivosExistentes); 
-            console.log(dadosSalvos);
 
             const arquivos = dadosSalvos.record;
 

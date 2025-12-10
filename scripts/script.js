@@ -8,8 +8,8 @@ const listaArquvivos = document.getElementById("file-list");
 //console.log(dropArea);
 
 
-//Fazer um terceiro tipo de busca na buscarArquivos, em que utilizando promisseAll vc faz duas requisições em paralelo 
-// para poder adicionar os arquivos já existentes
+//ELIMINAR DAS DUAS FUNÇÕES DE BUSCAR ARQUIVOS, TANTO PELO BOTÃO DE UPLOAD, COMO ARRASTA E SOLTA AS BUSCAR DE ARQUIVOS
+//DEIXANDO APENAS NA FUNÇÃO CRIA ARQUIVO DIFERENTE QUE AMBAS AS FUNÇÕES TEM EM COMUM.
 
 (async () =>{
     
@@ -17,15 +17,13 @@ const listaArquvivos = document.getElementById("file-list");
     //console.log(arquivosBD);
 
     const dadosMime = arquivosBD.resposta1.record.arquivos
-    console.log(dadosMime);
+    
     const arrayDeArquivos  = arquivosBD.resposta2.record.arquivosExistentes;
-    console.log(arrayDeArquivos);
+    
 
     arrayDeArquivos.forEach(elemento => {
         const tipoArquivo = elemento.tipo;
         const dado = dadosMime.find(dado => dado.mime === tipoArquivo);
-
-        console.log(elemento);
 
         criaArquivo(elemento, dado, elemento.resultado);
         
