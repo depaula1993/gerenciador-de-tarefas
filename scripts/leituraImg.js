@@ -20,14 +20,17 @@ export function abrindoImg(icone, img){
         console.log(e);
         
         const menuExclusao = document.createElement('div')
+        console.log(menuExclusao);
         menuExclusao.classList.add("menuExclusao");
         menuExclusao.style.left = e.pageX + "px";
         menuExclusao.style.top = e.pageY + "px";
 
-        icone.addEventListener("click", e =>{
+        dropArea.appendChild(menuExclusao);
+
+        dropArea.addEventListener("click", e =>{
             
             menuExclusao.style.display = "none";
-        
+            //MODO CORRETO ?? OU ESTOU GERANDO VÁRIOS MENUS 
         })
 
     })
