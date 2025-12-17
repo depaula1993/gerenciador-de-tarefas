@@ -21,7 +21,7 @@ export function abrindoImg(icone, img){
         
         const menuExclusao = document.createElement('div');
         const paragrafoMenuExc = document.createElement('p');
-        paragrafoMenuExc.innerText('Excluir');
+        paragrafoMenuExc.innerText = 'Excluir';
         menuExclusao.appendChild(paragrafoMenuExc);
         menuExclusao.classList.add("menuExclusao");
         menuExclusao.style.left = e.pageX + "px";
