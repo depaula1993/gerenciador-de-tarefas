@@ -19,8 +19,10 @@ export function abrindoImg(icone, img){
         e.preventDefault();
         console.log(e);
         
-        const menuExclusao = document.createElement('div')
-        console.log(menuExclusao);
+        const menuExclusao = document.createElement('div');
+        const paragrafoMenuExc = document.createElement('p');
+        paragrafoMenuExc.innerText('Excluir');
+        menuExclusao.appendChild(paragrafoMenuExc);
         menuExclusao.classList.add("menuExclusao");
         menuExclusao.style.left = e.pageX + "px";
         menuExclusao.style.top = e.pageY + "px";
@@ -31,6 +33,7 @@ export function abrindoImg(icone, img){
             
             menuExclusao.style.display = "none";
             //MODO CORRETO ?? OU ESTOU GERANDO VÁRIOS MENUS 
+            //MELHOR MODO DE FAZER O MENU SUMIR, É O JEITO CORRETO ??
         })
 
     })
