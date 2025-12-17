@@ -17,8 +17,7 @@ export function abrindoImg(icone, img){
     icone.addEventListener("contextmenu", e =>{
         
         e.preventDefault();
-        console.log(e);
-        
+
         const menuExclusao = document.createElement('div');
         const paragrafoMenuExc = document.createElement('p');
         paragrafoMenuExc.innerText = 'Excluir';
