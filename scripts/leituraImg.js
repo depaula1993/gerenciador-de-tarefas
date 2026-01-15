@@ -18,9 +18,7 @@ export function abrindoImg(icone, img){
         
         e.preventDefault();
 
-        if(menuExclusao){
-            menuExclusao.style.display = "none";
-        }
+        
 
         const menuExclusao = document.createElement('div');
         const paragrafoMenuExc = document.createElement('p');
@@ -30,6 +28,11 @@ export function abrindoImg(icone, img){
         menuExclusao.classList.add("menuExclusao");
         menuExclusao.style.left = e.pageX + "px";
         menuExclusao.style.top = e.pageY + "px";
+
+        const haha = document.querySelector('#menuExclusao');
+        console.log(haha);
+
+
 
         dropArea.appendChild(menuExclusao);
 
