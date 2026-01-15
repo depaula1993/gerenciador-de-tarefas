@@ -18,6 +18,10 @@ export function abrindoImg(icone, img){
         
         e.preventDefault();
 
+        if(menuExclusao){
+            menuExclusao.style.display = "none";
+        }
+
         const menuExclusao = document.createElement('div');
         const paragrafoMenuExc = document.createElement('p');
         paragrafoMenuExc.innerText = 'Excluir';
