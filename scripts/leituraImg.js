@@ -1,4 +1,5 @@
 import { dropArea } from "./arrastaESolta.js";
+import {menuExclusao} from "./script.js";
 
 export function abrindoImg(icone, img){
     icone.addEventListener("dblclick", e =>{
@@ -24,12 +25,6 @@ export function abrindoImg(icone, img){
             menuExclusaoExistente.style.display = 'none';
         }
 
-        const menuExclusao = document.createElement('div');
-        const paragrafoMenuExc = document.createElement('p');
-        paragrafoMenuExc.innerText = 'Excluir';
-        paragrafoMenuExc.style.textAlign = 'center';
-        menuExclusao.appendChild(paragrafoMenuExc);
-        menuExclusao.classList.add("menuExclusao");
         menuExclusao.style.left = e.pageX + "px";
         menuExclusao.style.top = e.pageY + "px";
 
