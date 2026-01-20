@@ -25,6 +25,7 @@ export function abrindoImg(icone, img){
             menuExclusaoExistente.style.display = 'none';
         }
 
+        menuExclusao.style.display = 'block'
         menuExclusao.style.left = e.pageX + "px";
         menuExclusao.style.top = e.pageY + "px";
 
