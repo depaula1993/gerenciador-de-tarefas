@@ -65,10 +65,13 @@ export const menuExclusao = document.createElement('div');
 
 //Evento para remoção menu exclusão: 
 dropArea.addEventListener("click", e =>{
-            
-            menuExclusao.style.display = "none";
-            //MODO CORRETO ?? OU ESTOU GERANDO VÁRIOS MENUS 
-            //MELHOR MODO DE FAZER O MENU SUMIR, É O JEITO CORRETO ??
+
+    e.preventDefault();
+
+    console.log(e);
+
+    menuExclusao.style.display = "none";
+         
 })
        
 
