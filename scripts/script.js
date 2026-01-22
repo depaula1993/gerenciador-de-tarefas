@@ -64,14 +64,14 @@ export const menuExclusao = document.createElement('div');
         menuExclusao.classList.add("menuExclusao");
 
 //Evento para remoção menu exclusão: 
-dropArea.addEventListener("click", e =>{
+document.addEventListener("click", e =>{
 
     e.preventDefault();
 
-    console.log(e);
+    if(!menuExclusao.contains(e.target)){
+        menuExclusao.style.display = "none";
+    }
 
-    menuExclusao.style.display = "none";
-         
 })
        
 
