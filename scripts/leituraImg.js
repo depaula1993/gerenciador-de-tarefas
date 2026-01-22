@@ -31,12 +31,5 @@ export function abrindoImg(icone, img){
 
         dropArea.appendChild(menuExclusao);
 
-        dropArea.addEventListener("click", e =>{
-            
-            menuExclusao.style.display = "none";
-            //MODO CORRETO ?? OU ESTOU GERANDO VÁRIOS MENUS 
-            //MELHOR MODO DE FAZER O MENU SUMIR, É O JEITO CORRETO ??
-        })
-
     })
 }    

@@ -5,8 +5,6 @@ import { abrindoVideo } from "./leituraVideo.js";
 import { dropArea } from "./arrastaESolta.js"
 import { buscaArquivos } from "./buscarArquivos.js";
 const listaArquvivos = document.getElementById("file-list");
-//console.log(dropArea);
-
 
 //ELIMINAR DAS DUAS FUNÇÕES DE BUSCAR ARQUIVOS, TANTO PELO BOTÃO DE UPLOAD, COMO ARRASTA E SOLTA AS BUSCAR DE ARQUIVOS
 //DEIXANDO APENAS NA FUNÇÃO CRIA ARQUIVO DIFERENTE QUE AMBAS AS FUNÇÕES TEM EM COMUM.
@@ -28,8 +26,6 @@ const listaArquvivos = document.getElementById("file-list");
         criaArquivo(elemento, dado, elemento.resultado);
         
     });
-
-
 
 })()
 
@@ -58,6 +54,7 @@ const funcoes = {
     abrindoVideo
 }
 
+//Menu de exclusão:
 
 export const menuExclusao = document.createElement('div');
         const paragrafoMenuExc = document.createElement('p');
@@ -65,6 +62,14 @@ export const menuExclusao = document.createElement('div');
         paragrafoMenuExc.style.textAlign = 'center';
         menuExclusao.appendChild(paragrafoMenuExc);
         menuExclusao.classList.add("menuExclusao");
+
+//Evento para remoção menu exclusão: 
+dropArea.addEventListener("click", e =>{
+            
+            menuExclusao.style.display = "none";
+            //MODO CORRETO ?? OU ESTOU GERANDO VÁRIOS MENUS 
+            //MELHOR MODO DE FAZER O MENU SUMIR, É O JEITO CORRETO ??
+})
        
 
 
