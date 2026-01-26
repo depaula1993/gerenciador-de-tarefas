@@ -14,22 +14,5 @@ export function abrindoImg(icone, img){
         //console.log(dropArea);
         //console.log("É uma imagem png")         
     })
-
-    icone.addEventListener("contextmenu", e =>{
-        
-        e.preventDefault();
-
-        const menuExclusaoExistente = document.querySelector('.menuExclusao');
-        
-        if(menuExclusaoExistente){
-            menuExclusaoExistente.style.display = 'none';
-        }
-
-        menuExclusao.style.display = 'block'
-        menuExclusao.style.left = e.pageX + "px";
-        menuExclusao.style.top = e.pageY + "px";
-
-        dropArea.appendChild(menuExclusao);
-
-    })
+    
 }    

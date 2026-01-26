@@ -40,6 +40,7 @@ export function criaArquivo(arquivo,dado, informacaoDeExibicao){
         class="icone__imagem"><span class="icone__leg">${arquivo.name || arquivo.nome}</span>`;
      
         funcoes[dado.func](icone,informacaoDeExibicao);
+        surgirMenuExclusao(icone);
         
         itemLista.appendChild(icone);
         listaArquvivos.appendChild(itemLista);
@@ -56,23 +57,46 @@ const funcoes = {
 
 //Menu de exclusão:
 
-export const menuExclusao = document.createElement('div');
-        const paragrafoMenuExc = document.createElement('p');
-        paragrafoMenuExc.innerText = 'Excluir';
-        paragrafoMenuExc.style.textAlign = 'center';
-        menuExclusao.appendChild(paragrafoMenuExc);
-        menuExclusao.classList.add("menuExclusao");
+    export const menuExclusao = document.createElement('div');
+            const paragrafoMenuExc = document.createElement('p');
+            paragrafoMenuExc.innerText = 'Excluir';
+            paragrafoMenuExc.style.textAlign = 'center';
+            menuExclusao.appendChild(paragrafoMenuExc);
+            menuExclusao.classList.add("menuExclusao");
 
-//Evento para remoção menu exclusão: 
-document.addEventListener("click", e =>{
+    //Evento para remoção menu exclusão: 
+    document.addEventListener("click", e =>{
 
-    e.preventDefault();
+        e.preventDefault();
 
-    if(!menuExclusao.contains(e.target)){
-        menuExclusao.style.display = "none";
+        if(!menuExclusao.contains(e.target)){
+            menuExclusao.style.display = "none";
+        }
+
+    })
+
+    //Função de surgimento do menu de exclusão:
+
+    function surgirMenuExclusao(icone){
+
+        icone.addEventListener("contextmenu", e =>{
+        
+            e.preventDefault();
+
+            const menuExclusaoExistente = document.querySelector('.menuExclusao');
+            
+            if(menuExclusaoExistente){
+                menuExclusaoExistente.style.display = 'none';
+            }
+
+            menuExclusao.style.display = 'block'
+            menuExclusao.style.left = e.pageX + "px";
+            menuExclusao.style.top = e.pageY + "px";
+
+            dropArea.appendChild(menuExclusao);
+
+        })
     }
-
-})
        
 
 
