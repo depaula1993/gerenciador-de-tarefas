@@ -4,6 +4,7 @@ import { abrindoPdf } from "./leituraPdf.js";
 import { abrindoVideo } from "./leituraVideo.js";
 import { dropArea } from "./arrastaESolta.js"
 import { buscaArquivos } from "./buscarArquivos.js";
+
 const listaArquvivos = document.getElementById("file-list");
 
 //ELIMINAR DAS DUAS FUNÇÕES DE BUSCAR ARQUIVOS, TANTO PELO BOTÃO DE UPLOAD, COMO ARRASTA E SOLTA AS BUSCAR DE ARQUIVOS
