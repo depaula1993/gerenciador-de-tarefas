@@ -1,4 +1,5 @@
 import { dropArea } from "./arrastaESolta.js";
+import {menuExclusao} from "./script.js";
 
 export function abrindoImg(icone, img){
     icone.addEventListener("dblclick", e =>{
@@ -13,6 +14,7 @@ export function abrindoImg(icone, img){
         //console.log(dropArea);
         //console.log("É uma imagem png")         
     })
+<<<<<<< HEAD
 
     icone.addEventListener("contextmenu", e =>{
         
@@ -44,4 +46,7 @@ export function abrindoImg(icone, img){
         })
 
     })
+=======
+    
+>>>>>>> ed987a4b816d59e0163a4c4d557cc9cd74d28c3f
 }    
