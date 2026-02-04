@@ -19,6 +19,7 @@ export function abrindoImg(icone, img){
         e.preventDefault();
 
         const menuExclusaoExistente = document.querySelector('.menuExclusao');
+        console.log(menuExclusaoExistente);
         
         if(menuExclusaoExistente){
             menuExclusaoExistente.style.display = 'none';
