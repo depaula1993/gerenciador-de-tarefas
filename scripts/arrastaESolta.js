@@ -36,7 +36,7 @@ export async function capturaArquivosDiferente (arquivo, dados){
         //console.log(e);
         const informacaoDeExibicao = e.target.result;
 
-        //console.log(informacaoDeExibicao);
+        //----------LOCAL DE CRIAÇÃO DO ID PARA SER ENVIADO AO HTML E SER SALVO-----------//
 
         criaArquivo(arquivo,dado, informacaoDeExibicao);
 
