@@ -60,7 +60,7 @@ async function salvaArquivos(arquivo, informacaoDeExibicao){
             const dadosSalvos = await buscaArquivos(funçãoBuscarArquivosExistentes); 
                     //VERIFICAR ALTERAR ESSA BUSCA DE DADOS PARA PODER CRIAR O ID NO HTML E NO BANCO DE DADOS
                     //VERIFICAR ADIANTAR A SALVAARQUIVOS ANTES DA CRIA ARQUIVOS NA CAPTURAARQUIVOSDIFERENTE E USAR UM RETURN COM O LENGTH DO ARRAY PARA USAR NA CRIA ARQUIVO  
-            const arquivos = dadosSalvos.record;
+            const arquivos = dadosSalvos.record.arquivosExistentes;
 
             console.log(arquivos);
 
@@ -70,7 +70,7 @@ async function salvaArquivos(arquivo, informacaoDeExibicao){
                 arquivoatual.id = arquivos[arquivos.lenght -1].id +1;
             }
             
-            arquivos.arquivosExistentes.push(arquivoatual);
+            arquivos.push(arquivoatual);
             await atualizararquivosExistentes(arquivos);
             
         }
