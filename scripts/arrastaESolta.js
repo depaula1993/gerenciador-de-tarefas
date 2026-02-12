@@ -64,7 +64,7 @@ async function salvaArquivos(arquivo, informacaoDeExibicao){
 
             console.log(arquivos);
 
-            if(arquivos.lenght === 0){
+            if(arquivos.lenght == 0){
                 console.log(arquivos);
                 arquivoatual.id = 1;
             }else{
