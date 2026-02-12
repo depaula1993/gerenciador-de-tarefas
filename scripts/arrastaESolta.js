@@ -64,10 +64,10 @@ async function salvaArquivos(arquivo, informacaoDeExibicao){
 
             console.log(arquivos);
 
-            if(arquivos.lenght === 0){
+            if(arquivos.length === 0){
                 arquivoatual.id = 1;
             }else{
-                arquivoatual.id = arquivos[arquivos.lenght -1].id +1;
+                arquivoatual.id = arquivos[arquivos.length -1].id +1;
             }
             
             arquivos.push(arquivoatual);
