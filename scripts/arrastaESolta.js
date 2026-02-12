@@ -62,13 +62,14 @@ async function salvaArquivos(arquivo, informacaoDeExibicao){
                     //VERIFICAR ADIANTAR A SALVAARQUIVOS ANTES DA CRIA ARQUIVOS NA CAPTURAARQUIVOSDIFERENTE E USAR UM RETURN COM O LENGTH DO ARRAY PARA USAR NA CRIA ARQUIVO  
             const arquivos = dadosSalvos.record;
 
+            console.log(arquivos);
+
             if(arquivos.lenght === 0){
                 arquivoatual.id = 1;
             }else{
                 arquivoatual.id = arquivos[arquivos.lenght -1].id +1;
             }
-
-            console.log(arquivos);
+            
             arquivos.arquivosExistentes.push(arquivoatual);
             await atualizararquivosExistentes(arquivos);
             
