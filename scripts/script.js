@@ -21,7 +21,7 @@ const listaArquvivos = document.getElementById("file-list");
     
     const arrayDeArquivos  = arquivosBD.resposta2.record;
     console.log(arrayDeArquivos);
-    /*
+    
 
     arrayDeArquivos.forEach(elemento => {
         const tipoArquivo = elemento.tipo;
@@ -30,7 +30,7 @@ const listaArquvivos = document.getElementById("file-list");
         criaArquivo(elemento, dado, elemento.resultado);
         
     });
-*/
+
 })()
 
   
