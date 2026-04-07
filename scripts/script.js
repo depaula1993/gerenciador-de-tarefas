@@ -15,8 +15,8 @@ const listaArquvivos = document.getElementById("file-list");
 (async () =>{
     
     const arquivosBD = await buscaArquivos(2);
-    //console.log(arquivosBD);
-
+    console.log(arquivosBD);
+/*
     const dadosMime = arquivosBD.resposta1.record.arquivos // ESSES DADOS PODEM SER ARMAZENADOS JUNTO COM O SISTEMA PARA DEIXALO MAIS RÁPIDO
     
     const arrayDeArquivos  = arquivosBD.resposta2.record.arquivosExistentes;
@@ -30,7 +30,7 @@ const listaArquvivos = document.getElementById("file-list");
         criaArquivo(elemento, dado, elemento.resultado);
         
     });
-
+*/
 })()
 
   
