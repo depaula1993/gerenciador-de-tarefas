@@ -20,6 +20,7 @@ const listaArquvivos = document.getElementById("file-list");
     const dadosMime = arquivosBD.resposta1.record.arquivos // ESSES DADOS PODEM SER ARMAZENADOS JUNTO COM O SISTEMA PARA DEIXALO MAIS RÁPIDO
     
     const arrayDeArquivos  = arquivosBD.resposta2.record.arquivosExistentes;
+    console.log(arrayDeArquivos);
     
 
     arrayDeArquivos.forEach(elemento => {
