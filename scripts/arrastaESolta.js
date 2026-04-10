@@ -38,6 +38,11 @@ export async function capturaArquivosDiferente (arquivo, dados){
 
         //----------LOCAL DE CRIAÇÃO DO ID PARA SER ENVIADO AO HTML E SER SALVO-----------//
 
+        // Colocar para salvar primeiro e depois chamar a cria arquivo. Pq colocar para criar o ID aqui e já chamar a criar arquivo
+        //será necessário modificar a cria arquivo e ela está sendo chamado em um segundo momento, quando a página é recarregada.
+        // Ou seja, ela já está puxando dos arquivos salvos, então se vc salvar antes pode reaproveitar isso sem precisar modifica-la.
+        // No momento que o arquivo é adicionado, basta puxar o último item do array.
+
         criaArquivo(arquivo,dado, informacaoDeExibicao);
 
         await salvaArquivos(arquivo, informacaoDeExibicao);
