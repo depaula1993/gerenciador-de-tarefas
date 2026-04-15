@@ -47,7 +47,7 @@ export async function capturaArquivosDiferente (arquivo, dados){
 
         const buscaArquivosSalvosNoBD = 1;
         const arquivos = buscaArquivos(buscaArquivosSalvosNoBD);
-
+        //erro está na salvaArquivos logo a baixo
         console.log(arquivos);
         
         criaArquivo(arquivo,dado, informacaoDeExibicao);
