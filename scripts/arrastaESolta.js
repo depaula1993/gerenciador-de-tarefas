@@ -43,9 +43,16 @@ export async function capturaArquivosDiferente (arquivo, dados){
         // Ou seja, ela já está puxando dos arquivos salvos, então se vc salvar antes pode reaproveitar isso sem precisar modifica-la.
         // No momento que o arquivo é adicionado, basta puxar o último item do array.
 
+        await salvaArquivos(arquivo, informacaoDeExibicao);
+
+        const buscaArquivosSalvosNoBD = 1;
+        const arquivos = buscaArquivos(buscaArquivosSalvosNoBD);
+
+        console.log(arquivos);
+        
         criaArquivo(arquivo,dado, informacaoDeExibicao);
 
-        await salvaArquivos(arquivo, informacaoDeExibicao);
+        
         
     }
     
