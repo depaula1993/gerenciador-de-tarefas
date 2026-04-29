@@ -46,7 +46,7 @@ export async function capturaArquivosDiferente (arquivo, dados){
         await salvaArquivos(arquivo, informacaoDeExibicao);
 
         const buscaArquivosSalvosNoBD = 1;
-        const arquivos = buscaArquivos(buscaArquivosSalvosNoBD);
+        const arquivos = await buscaArquivos(buscaArquivosSalvosNoBD);
         //erro está na salvaArquivos logo a baixo
         console.log(arquivos);
         
@@ -73,11 +73,12 @@ async function salvaArquivos(arquivo, informacaoDeExibicao){
                     //VERIFICAR ALTERAR ESSA BUSCA DE DADOS PARA PODER CRIAR O ID NO HTML E NO BANCO DE DADOS
                     //VERIFICAR ADIANTAR A SALVAARQUIVOS ANTES DA CRIA ARQUIVOS NA CAPTURAARQUIVOSDIFERENTE E USAR UM RETURN COM O LENGTH DO ARRAY PARA USAR NA CRIA ARQUIVO  
             
-            const arquivos = dadosSalvos.record.arquivosExistentes; //O erro está aqui nesse caminho, após vc colocar o primeiro arquivo no array vazio, verificar essa caminho
+            console.log(dadosSalvos);
+            
+            const arquivos = dadosSalvos.record.arquivos; //O erro está aqui nesse caminho, após vc colocar o primeiro arquivo no array vazio, verificar essa caminho
             //verificar desde a variável dadosSalvos
 
-            console.log(arquivos);
-
+            
             if(arquivos.length === 0){
                 arquivoatual.id = 1;
             }else{
@@ -86,7 +87,7 @@ async function salvaArquivos(arquivo, informacaoDeExibicao){
             
             arquivos.push(arquivoatual);
             await atualizararquivosExistentes(arquivos);
-            
+    
         }
         catch(erro){
             console.log("Nao deu certo", erro);
