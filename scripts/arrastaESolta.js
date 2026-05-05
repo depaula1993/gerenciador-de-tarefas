@@ -74,20 +74,23 @@ async function salvaArquivos(arquivo, informacaoDeExibicao){
                     //VERIFICAR ADIANTAR A SALVAARQUIVOS ANTES DA CRIA ARQUIVOS NA CAPTURAARQUIVOSDIFERENTE E USAR UM RETURN COM O LENGTH DO ARRAY PARA USAR NA CRIA ARQUIVO  
             
             console.log(dadosSalvos);
+            // O erro está aqui. Quando o array de arquivos está vazio ele tem a denominação arquivos, o que muda o caminho para acessar
+            //o array abaixo quando um arquivo é adicionado, pois some o nome "arquivo" do array e o acesso é direto por: dadosSalvos.record
+            //Verificar criar um if pra quando é array vazio ou array com arquivos, ou otimizar de outra forma.      
             
-            const arquivos = dadosSalvos.record.arquivos; //O erro está aqui nesse caminho, após vc colocar o primeiro arquivo no array vazio, verificar essa caminho
-            //verificar desde a variável dadosSalvos
-
+            
+            const arquivosExistentes = dadosSalvos.record;          
             
             if(arquivos.length === 0){
                 arquivoatual.id = 1;
             }else{
-                arquivoatual.id = arquivos[arquivos.length -1].id +1;
+                arquivoatual.id = arquivosExistentes.arquivos[arquivos.length -1].id +1;
             }
             
-            arquivos.push(arquivoatual);
-            await atualizararquivosExistentes(arquivos);
-    
+            arquivosExistentes.arquivos.push(arquivoatual);
+            console.log(arquivosExistentes);
+            await atualizararquivosExistentes(arquivosExistentes);
+               
         }
         catch(erro){
             console.log("Nao deu certo", erro);
